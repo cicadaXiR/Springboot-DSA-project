@@ -10,10 +10,8 @@ import com.springdatastructure.demo.repository.StackRepository;
 @Service
 public class StackService {
 	private List<Integer> stack = new ArrayList<>();
-	
 	@Autowired
 	private StackRepository stackrepo;
-	
 	public void push(int item) 
 	{
 		Stack newStack = new Stack();
