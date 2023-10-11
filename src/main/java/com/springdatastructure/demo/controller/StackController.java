@@ -1,6 +1,8 @@
 package com.springdatastructure.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -11,6 +13,7 @@ import com.springdatastructure.demo.service.StackService;
 
 @RestController
 @RequestMapping("/stack")
+@CrossOrigin("http://localhost:3000/")
 public class StackController {
 	
 	@Autowired
@@ -21,7 +24,7 @@ public class StackController {
 		service.push(item);;
 	}
 	
-	@GetMapping("/pop")
+	@DeleteMapping("/pop")
 	public int pop() {
 		return service.pop();
 	}
