@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.springdatastructure.demo.dto.StackRequestDto;
 import com.springdatastructure.demo.service.StackService;
 
 @RestController
@@ -20,17 +21,17 @@ public class StackController {
 	private StackService service;
 	
 	@PostMapping("/push")
-	public void push(@RequestBody int item) {
-		service.push(item);;
+	public void push(@RequestBody StackRequestDto stackRequestDto) {
+		service.push(stackRequestDto);
 	}
 	
 	@DeleteMapping("/pop")
-	public int pop() {
+	public String pop() {
 		return service.pop();
 	}
 	
 	@GetMapping("/peek")
-	public int peek() {
+	public String peek() {
 		return service.peek();
 	}
 	

@@ -4,25 +4,30 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import com.springdatastructure.demo.dto.StackRequestDto;
 import com.springdatastructure.demo.model.Stack;
 import com.springdatastructure.demo.repository.StackRepository;
 
 @Service
 public class StackService {
-	private List<Integer> stack = new ArrayList<>();
+	
+	private List<String> stack = new ArrayList<>();
+	
 	@Autowired
 	private StackRepository stackrepo;
-	public void push(int item) 
+	
+	public void push(StackRequestDto stackRequestDto) 
 	{
 		Stack newStack = new Stack();
 		
-		newStack.setValue(item);
+		newStack.setValue(stackRequestDto.getValue());
 		stackrepo.save(newStack);
 		
-		stack.add(item);	
+		stack.add(stackRequestDto.getValue());	
 	}
 	
-	public int pop() {
+	public String pop() {
 		if(isEmpty()) {
 			throw new IllegalStateException("Stack is Empty");
 		}
@@ -33,7 +38,7 @@ public class StackService {
 		return stack.remove(lastIndex);
 	}
 	
-	public int peek() {
+	public String peek() {
 		if(isEmpty()) {
 			throw new IllegalStateException("Stack is Empty");
 		}
